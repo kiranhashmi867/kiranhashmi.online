@@ -1,1 +1,5 @@
-5rg
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kiranhashmi.online/sitemap.xml
