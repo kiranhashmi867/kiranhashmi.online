@@ -1,4 +1,7 @@
-<!-- blog.html -->
+---
+layout: null
+permalink: /blog.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,10 +71,9 @@
     .blog-tag{background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;font-weight:900;font-size:11px;padding:5px 14px;border-radius:999px;display:inline-block;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;}
     .blog-content p{margin-bottom:16px;line-height:1.9;color:#4B3B4B;}
     .blog-content h3{font-weight:900;font-size:20px;margin:22px 0 10px;color:#3D2D3D;}
-    .blog-full{display:none;}
-    .blog-full.open{display:block;}
-    .read-more-btn{background:none;border:2px solid #E91E63;color:#E91E63;font-weight:900;border-radius:999px;padding:10px 24px;cursor:pointer;transition:.25s;font-size:14px;}
+    .read-more-btn{background:none;border:2px solid #E91E63;color:#E91E63;font-weight:900;border-radius:999px;padding:10px 24px;cursor:pointer;transition:.25s;font-size:14px;display:inline-block;text-decoration:none;}
     .read-more-btn:hover{background:#E91E63;color:white;}
+    .no-posts{text-align:center;padding:60px 20px;color:#7A5C6E;font-weight:bold;}
     @media (max-width:768px){
       .desktop-menu{display:none !important;}
       .mobile-menu{background:#FFF5F9;padding:18px 24px;border-top:1px solid rgba(233,30,99,.15);}
@@ -120,75 +122,32 @@
 <section class="py-20 px-6 bg-white">
   <div class="max-w-4xl mx-auto space-y-14">
 
-    <article class="blog-card" id="post-1">
-      <img class="blog-img" src="https://picsum.photos/seed/seo-onpage/900/500" alt="On-page SEO mistakes" loading="lazy" />
+    {% for post in site.posts %}
+    <article class="blog-card">
+      {% if post.image %}
+      <img class="blog-img" src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" />
+      {% else %}
+      <img class="blog-img" src="https://picsum.photos/seed/{{ post.slug }}/900/500" alt="{{ post.title }}" loading="lazy" />
+      {% endif %}
       <div class="blog-card-body">
-        <span class="blog-tag">SEO</span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 deep-text">5 On-Page SEO Mistakes That Are Killing Your Rankings</h2>
-        <p class="text-sm text-gray-500 mb-6"><i class="far fa-calendar mr-1"></i> Published Sep 2026 &nbsp; | &nbsp; <i class="far fa-clock mr-1"></i> 4 min read</p>
+        {% if post.category %}<span class="blog-tag">{{ post.category }}</span>{% endif %}
+        <h2 class="text-2xl md:text-3xl font-black mb-2 deep-text">{{ post.title }}</h2>
+        <p class="text-sm text-gray-500 mb-6">
+          <i class="far fa-calendar mr-1"></i> {{ post.date | date: "%b %Y" }}
+          &nbsp; | &nbsp;
+          <i class="far fa-clock mr-1"></i> {{ post.read_time | default: "4 min read" }}
+        </p>
         <div class="blog-content">
-          <p>Many website owners spend heavily on backlinks while ignoring basic on-page fundamentals. Here are five mistakes I see most often when auditing client sites.</p>
-          <div class="blog-full" id="full-1">
-            <h3>1. Missing or Duplicate Title Tags</h3>
-            <p>Every page needs a unique, keyword-focused title tag under 60 characters. Duplicate titles confuse search engines and hurt click-through rates.</p>
-            <h3>2. Thin Content</h3>
-            <p>Pages under 300 words rarely rank for competitive terms. Focus on covering a topic thoroughly rather than padding with filler.</p>
-            <h3>3. Slow Page Speed</h3>
-            <p>Compress images, use lazy loading, and minimize scripts. A one-second delay in load time can significantly reduce conversions.</p>
-            <h3>4. No Internal Linking Strategy</h3>
-            <p>Internal links help search engines understand site structure and pass authority between pages. Link related content naturally within your text.</p>
-            <h3>5. Ignoring Mobile Experience</h3>
-            <p>With most traffic coming from mobile devices, a responsive, fast-loading mobile layout is no longer optional — it's essential for rankings.</p>
-          </div>
+          <p>{{ post.excerpt | default: post.content | strip_html | truncatewords: 30 }}</p>
         </div>
-        <button type="button" class="read-more-btn" data-target="full-1">Read More</button>
+        <a href="{{ post.url }}" class="read-more-btn">Read More</a>
       </div>
     </article>
-
-    <article class="blog-card" id="post-2">
-      <img class="blog-img" src="https://picsum.photos/seed/link-building/900/500" alt="Backlink building quality vs quantity" loading="lazy" />
-      <div class="blog-card-body">
-        <span class="blog-tag">Link Building</span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 deep-text">Why Quality Beats Quantity in Backlink Building</h2>
-        <p class="text-sm text-gray-500 mb-6"><i class="far fa-calendar mr-1"></i> Published Sep 2026 &nbsp; | &nbsp; <i class="far fa-clock mr-1"></i> 3 min read</p>
-        <div class="blog-content">
-          <p>A common mistake businesses make is chasing backlink volume instead of relevance and authority. Search engines have become far better at detecting unnatural link patterns.</p>
-          <div class="blog-full" id="full-2">
-            <h3>Focus On Relevance</h3>
-            <p>A single link from a site in your niche carries more weight than dozens of links from unrelated, low-quality directories.</p>
-            <h3>Check Trust Metrics</h3>
-            <p>Domain rating, organic traffic, and spam score all matter. A backlink from a site with real visitors is far more valuable than one from an inactive blog.</p>
-            <h3>Diversify Anchor Text</h3>
-            <p>Over-optimized anchor text is a red flag for search engines. Mix branded, generic, and keyword anchors naturally across your link profile.</p>
-            <p>Sustainable link building takes patience, but it protects your site long-term and builds genuine authority.</p>
-          </div>
-        </div>
-        <button type="button" class="read-more-btn" data-target="full-2">Read More</button>
-      </div>
-    </article>
-
-    <article class="blog-card" id="post-3">
-      <img class="blog-img" src="https://picsum.photos/seed/local-seo-maps/900/500" alt="Ranking higher on Google Maps" loading="lazy" />
-      <div class="blog-card-body">
-        <span class="blog-tag">Local SEO</span>
-        <h2 class="text-2xl md:text-3xl font-black mb-2 deep-text">How to Rank Higher on Google Maps in 2026</h2>
-        <p class="text-sm text-gray-500 mb-6"><i class="far fa-calendar mr-1"></i> Published Sep 2026 &nbsp; | &nbsp; <i class="far fa-clock mr-1"></i> 5 min read</p>
-        <div class="blog-content">
-          <p>Local SEO has changed significantly, and Google Business Profile optimization remains the biggest lever for local visibility.</p>
-          <div class="blog-full" id="full-3">
-            <h3>Complete Every Profile Field</h3>
-            <p>Category, hours, services, and photos all impact ranking. An incomplete profile signals lower relevance to Google's algorithm.</p>
-            <h3>Collect Consistent Reviews</h3>
-            <p>Review count, recency, and response rate all factor into local pack rankings. Encourage happy customers to leave detailed reviews regularly.</p>
-            <h3>Build Local Citations</h3>
-            <p>Consistent NAP (Name, Address, Phone) information across directories strengthens trust signals for local search algorithms.</p>
-            <h3>Create Location-Specific Content</h3>
-            <p>Pages targeting specific service areas help capture "near me" searches and long-tail local keywords.</p>
-          </div>
-        </div>
-        <button type="button" class="read-more-btn" data-target="full-3">Read More</button>
-      </div>
-    </article>
+    {% else %}
+    <div class="no-posts">
+      <p>Blog posts coming soon — stay tuned!</p>
+    </div>
+    {% endfor %}
 
   </div>
 </section>
@@ -272,14 +231,6 @@
       menuBtn.textContent = isOpen ? '✕' : '☰';
     });
   }
-
-  document.querySelectorAll('.read-more-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const full = document.getElementById(btn.getAttribute('data-target'));
-      const isOpen = full.classList.toggle('open');
-      btn.textContent = isOpen ? 'Read Less' : 'Read More';
-    });
-  });
 </script>
 </body>
 </html>
