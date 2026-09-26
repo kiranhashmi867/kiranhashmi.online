@@ -1,1 +1,131 @@
-vghj
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ page.title }} | Kiran Hashmi</title>
+  <meta name="description" content="{{ page.excerpt }}" />
+
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' font-size='50' fill='%23E91E63'>K</text></svg>" type="image/svg+xml" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.excerpt }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  {% if page.image %}<meta property="og:image" content="{{ site.url }}{{ page.image }}" />{% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background:#FFF5F9; color:#3D2D3D; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; overflow-x:hidden; }
+    .primary-text{color:#E91E63;} .accent-text{color:#DA70D6;} .deep-text{color:#3D2D3D;}
+    .glass-card{background:rgba(255,255,255,.85);border:1px solid rgba(233,30,99,.20);backdrop-filter:blur(14px);box-shadow:0 24px 70px rgba(233,30,99,.10);}
+    .main-btn{background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;font-weight:900;border-radius:999px;padding:14px 30px;display:inline-block;transition:.3s;box-shadow:0 16px 35px rgba(233,30,99,.30);}
+    .main-btn:hover{transform:scale(1.05);box-shadow:0 20px 50px rgba(233,30,99,.40);background:linear-gradient(135deg,#DA70D6,#FF69B4);}
+    .logo-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-right:10px;font-size:24px;box-shadow:0 8px 20px rgba(233,30,99,.25);}
+    .floating-contact{position:fixed;bottom:22px;right:22px;z-index:9999;}
+    .contact-options{display:none;flex-direction:column;gap:10px;margin-bottom:12px;}
+    .floating-contact:hover .contact-options{display:flex;}
+    .float-btn{width:54px;height:54px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:white;box-shadow:0 12px 28px rgba(0,0,0,.30);transition:.3s;}
+    .float-btn:hover{transform:scale(1.15);}
+    .mobile-menu{display:none;} .mobile-menu.active{display:block;}
+    .blog-tag{background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;font-weight:900;font-size:11px;padding:5px 14px;border-radius:999px;display:inline-block;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;}
+    .blog-body img{width:100%;border-radius:20px;margin:20px 0;}
+    .blog-body p{margin-bottom:16px;line-height:1.9;color:#4B3B4B;}
+    .blog-body h2,.blog-body h3{font-weight:900;margin:22px 0 10px;color:#3D2D3D;}
+    @media (max-width:768px){
+      .desktop-menu{display:none !important;}
+      .mobile-menu{background:#FFF5F9;padding:18px 24px;border-top:1px solid rgba(233,30,99,.15);}
+      .mobile-menu a{display:block;padding:12px 0;color:#3D2D3D;font-weight:bold;text-transform:uppercase;font-size:13px;border-bottom:1px solid rgba(233,30,99,.08);}
+    }
+    .gradient-text{background:linear-gradient(135deg,#E91E63,#DA70D6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  </style>
+</head>
+<body>
+
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-pink-200">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <a href="/" class="text-2xl font-black deep-text flex items-center">
+      <span class="logo-mark">KH</span>
+      <span>KIRAN<span class="primary-text">HASHMI</span></span>
+    </a>
+    <div class="desktop-menu hidden md:flex gap-6 font-bold text-xs uppercase items-center">
+      <a href="/" class="deep-text hover:primary-text">Home</a>
+      <a href="/about.html" class="deep-text hover:primary-text">About</a>
+      <a href="/service.html" class="deep-text hover:primary-text">Services</a>
+      <a href="/blog.html" class="primary-text hover:opacity-80">Blog</a>
+      <a href="/contact.html" class="deep-text hover:primary-text">Contact</a>
+      <a href="/contact.html" class="main-btn text-sm px-5 py-2">Get Started</a>
+    </div>
+    <button class="mobile-menu-btn deep-text text-3xl font-bold md:hidden" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-menu">
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/service.html">Services</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="py-16 px-6" style="background: radial-gradient(circle at top left, rgba(233,30,99,.25), transparent 30%), radial-gradient(circle at bottom right, rgba(218,112,214,.25), transparent 35%), linear-gradient(135deg,#FFF5F9 0%,#FFE6F0 45%,#F3E5FF 100%);">
+  <div class="max-w-4xl mx-auto">
+    {% if page.category %}<span class="blog-tag">{{ page.category }}</span>{% endif %}
+    <h1 class="text-3xl md:text-5xl font-black uppercase leading-tight mb-4 deep-text">{{ page.title }}</h1>
+    <p class="text-sm text-gray-500">
+      <i class="far fa-calendar mr-1"></i> {{ page.date | date: "%b %Y" }}
+      &nbsp; | &nbsp;
+      <i class="far fa-clock mr-1"></i> {{ page.read_time }}
+    </p>
+  </div>
+</header>
+
+<section class="py-16 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="glass-card rounded-[32px] p-8 md:p-10 blog-body">
+      {% if page.image %}<img src="{{ page.image }}" alt="{{ page.title }}" />{% endif %}
+      {{ content }}
+    </div>
+    <div class="text-center mt-12">
+      <a href="/blog.html" class="main-btn">← Back to Blog</a>
+    </div>
+  </div>
+</section>
+
+<div class="floating-contact">
+  <div class="contact-options">
+    <a href="https://wa.me/923081333143" target="_blank" rel="noopener noreferrer" class="float-btn bg-green-500" aria-label="WhatsApp"><i class="fab fa-whatsapp text-2xl"></i></a>
+    <a href="mailto:kiranhashmi867@gmail.com" class="float-btn bg-red-500" aria-label="Email"><i class="fas fa-envelope text-2xl"></i></a>
+    <a href="https://www.facebook.com/share/1CkcAH4rJv/" target="_blank" rel="noopener noreferrer" class="float-btn bg-blue-600" aria-label="Facebook"><i class="fab fa-facebook-f text-2xl"></i></a>
+    <a href="https://www.linkedin.com/in/kiranghashmi" target="_blank" rel="noopener noreferrer" class="float-btn bg-blue-700" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-2xl"></i></a>
+    <a href="https://www.instagram.com/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="float-btn bg-pink-600" aria-label="Instagram"><i class="fab fa-instagram text-2xl"></i></a>
+    <a href="https://www.snapchat.com/add/ayyatshah23?share_id=tINm3A5gleg&locale=en-PK" target="_blank" rel="noopener noreferrer" class="float-btn bg-yellow-400" aria-label="Snapchat"><i class="fab fa-snapchat-ghost text-2xl"></i></a>
+  </div>
+  <button type="button" aria-label="Open contact options" class="deep-text w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:rotate-12 transition" style="background:linear-gradient(135deg,#E91E63,#DA70D6);"><i class="fas fa-comments text-3xl text-white"></i></button>
+</div>
+
+<footer class="pt-16 pb-8 px-6 text-white" style="background:linear-gradient(135deg,#3D2D3D,#5A3D5C);border-top:1px solid rgba(233,30,99,.25);">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-pink-200 text-sm">© 2026 Kiran Hashmi. All Rights Reserved. | kiranhashmi.online</p>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+  }
+</script>
+</body>
+</html>
