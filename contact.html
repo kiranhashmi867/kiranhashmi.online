@@ -53,6 +53,7 @@
     .glass-dark{background:rgba(255,255,255,.10);border:1px solid rgba(255,105,180,.20);backdrop-filter:blur(14px);box-shadow:0 24px 70px rgba(0,0,0,.15);}
     .main-btn{background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;font-weight:900;border-radius:999px;padding:14px 30px;display:inline-block;transition:.3s;box-shadow:0 16px 35px rgba(233,30,99,.30);border:none;cursor:pointer;}
     .main-btn:hover{transform:scale(1.05);box-shadow:0 20px 50px rgba(233,30,99,.40);background:linear-gradient(135deg,#DA70D6,#FF69B4);}
+    .main-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
     .logo-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-right:10px;font-size:24px;box-shadow:0 8px 20px rgba(233,30,99,.25);}
     .icon-box{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#E91E63,#DA70D6);color:white;font-size:22px;box-shadow:0 12px 30px rgba(233,30,99,.25);}
     .floating-contact{position:fixed;bottom:22px;right:22px;z-index:9999;}
@@ -64,6 +65,9 @@
     .location-badge{background:linear-gradient(135deg,rgba(233,30,99,.15),rgba(218,112,214,.15));border:1px solid rgba(233,30,99,.25);border-radius:12px;padding:8px 16px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:bold;color:#E91E63;}
     .form-input{width:100%;padding:14px 18px;border-radius:14px;border:1px solid rgba(233,30,99,.25);background:#fff;color:#3D2D3D;outline:none;transition:.2s;}
     .form-input:focus{border-color:#E91E63;box-shadow:0 0 0 3px rgba(233,30,99,.12);}
+    .form-msg{display:none;padding:14px 18px;border-radius:14px;font-weight:bold;margin-bottom:16px;font-size:14px;}
+    .form-msg.success{display:block;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#15803d;}
+    .form-msg.error{display:block;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#b91c1c;}
     @media (max-width:768px){
       .desktop-menu{display:none !important;}
       .mobile-menu{background:#FFF5F9;padding:18px 24px;border-top:1px solid rgba(233,30,99,.15);}
@@ -113,9 +117,15 @@
 
     <div class="glass-card rounded-[32px] p-8 md:p-10">
       <h2 class="text-2xl md:text-3xl font-black mb-6 deep-text">Send a Message</h2>
-      <form action="https://formsubmit.co/kiranhashmi867@gmail.com" method="POST" class="space-y-5">
+
+      <div id="formMsg" class="form-msg"></div>
+
+      <form id="contactForm" action="https://formsubmit.co/ajax/kiranhashmi867@gmail.com" method="POST" class="space-y-5">
         <input type="hidden" name="_subject" value="New message from kiranhashmi.online" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <!-- honeypot: keep hidden, bots fill this, humans never see it -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div>
           <label class="block text-sm font-bold mb-2 deep-text">Full Name</label>
           <input type="text" name="name" required class="form-input" placeholder="Your name" />
@@ -139,7 +149,7 @@
           <label class="block text-sm font-bold mb-2 deep-text">Message</label>
           <textarea name="message" rows="5" required class="form-input" placeholder="Tell me about your project..."></textarea>
         </div>
-        <button type="submit" class="main-btn w-full text-center">Send Message</button>
+        <button type="submit" id="submitBtn" class="main-btn w-full text-center">Send Message</button>
       </form>
     </div>
 
@@ -171,6 +181,7 @@
           <a href="https://www.linkedin.com/in/kiranghashmi" target="_blank" rel="noopener noreferrer" class="primary-text hover:opacity-70" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.facebook.com/share/1CkcAH4rJv/" target="_blank" rel="noopener noreferrer" class="primary-text hover:opacity-70" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
           <a href="https://www.instagram.com/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="primary-text hover:opacity-70" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.snapchat.com/add/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="primary-text hover:opacity-70" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
         </div>
       </div>
     </div>
@@ -184,6 +195,7 @@
     <a href="https://www.facebook.com/share/1CkcAH4rJv/" target="_blank" rel="noopener noreferrer" class="float-btn bg-blue-600" aria-label="Facebook"><i class="fab fa-facebook-f text-2xl"></i></a>
     <a href="https://www.linkedin.com/in/kiranghashmi" target="_blank" rel="noopener noreferrer" class="float-btn bg-blue-700" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-2xl"></i></a>
     <a href="https://www.instagram.com/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="float-btn bg-pink-600" aria-label="Instagram"><i class="fab fa-instagram text-2xl"></i></a>
+    <a href="https://www.snapchat.com/add/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="float-btn" style="background:#FFFC00;color:#000;" aria-label="Snapchat"><i class="fab fa-snapchat-ghost text-2xl"></i></a>
   </div>
   <button type="button" aria-label="Open contact options" class="deep-text w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:rotate-12 transition" style="background:linear-gradient(135deg,#E91E63,#DA70D6);"><i class="fas fa-comments text-3xl text-white"></i></button>
 </div>
@@ -198,6 +210,7 @@
         <a href="https://wa.me/923081333143" target="_blank" rel="noopener noreferrer" class="hover:text-green-400" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.facebook.com/share/1CkcAH4rJv/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.snapchat.com/add/kiranhashmi912" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
       </div>
     </div>
     <div>
@@ -241,6 +254,46 @@
       const isOpen = mobileMenu.classList.contains('active');
       menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+  }
+
+  // Form activation: submit via fetch to FormSubmit's AJAX endpoint so it
+  // sends properly and shows a real success/error state without leaving the page.
+  const contactForm = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      formMsg.className = 'form-msg';
+      formMsg.textContent = '';
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+          if (result.ok) {
+            formMsg.className = 'form-msg success';
+            formMsg.textContent = "Thanks! Your message has been sent — I'll get back to you soon.";
+            contactForm.reset();
+          } else {
+            throw new Error('Submit failed');
+          }
+        })
+        .catch(function () {
+          formMsg.className = 'form-msg error';
+          formMsg.textContent = 'Something went wrong sending your message. Please email kiranhashmi867@gmail.com directly.';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
     });
   }
 </script>
