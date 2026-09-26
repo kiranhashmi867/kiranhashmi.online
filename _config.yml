@@ -1,1 +1,19 @@
-1
+title: Kiran Hashmi
+description: Professional SEO, Content Writing & Digital Marketing Services
+url: "https://kiranhashmi.online"
+baseurl: ""
+
+markdown: kramdown
+permalink: /blog/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
